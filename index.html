@@ -1,151 +1,195 @@
-﻿<!DOCTYPE html>
-<html lang="en" class="dark">
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-950">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeadVault | On-Demand B2B Extraction Engine</title>
+    <title>LeadVault | B2B Data Extraction Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: { extend: { colors: { brand: '#10B981', darkbg: '#0F172A', cardbg: '#1E293B' } } }
-        }
-    </script>
 </head>
-<body class="bg-darkbg text-slate-100 font-sans antialiased min-h-screen">
-    <div class="max-w-5xl mx-auto px-4 py-10">
-        
-        <header class="text-center mb-10">
-            <span class="bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full border border-emerald-500/20">Live Automated Utility</span>
-            <h1 class="text-4xl md:text-5xl font-black mt-3 tracking-tight">On-Demand B2B Lead Extraction</h1>
-            <p class="text-slate-400 text-sm md:text-base mt-2 max-w-2xl mx-auto">Extract live verified target businesses with active WhatsApp numbers in 30 seconds. Zero stale databases.</p>
-        </header>
+<body class="h-full text-slate-100 font-sans antialiased flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
 
-        <div class="bg-cardbg p-6 rounded-2xl border border-slate-700/50 shadow-2xl mb-8">
-            <form id="searchForm" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="h-3 w-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="text-xl font-bold tracking-tight text-white">Lead<span class="text-emerald-400">Vault</span></span>
+                <span class="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Live Engine v1.0</span>
+            </div>
+            <div class="flex items-center space-x-4 text-sm text-slate-400">
+                <span>Status: <strong class="text-emerald-400">Operational</strong></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Hub -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        
+        <!-- Hero Search Section -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Extract Verified B2B Leads <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">in Real-Time</span>
+            </h1>
+            <p class="text-lg text-slate-400">
+                Target high-value businesses, filter active WhatsApp numbers, and export ready-to-close prospect lists instantly.
+            </p>
+        </div>
+
+        <!-- Search Control Panel -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl max-w-3xl mx-auto mb-12">
+            <form id="searchForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1">TARGET NICHE</label>
-                    <input type="text" id="niche" placeholder="e.g. Medical Clinics, Hardware" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand" required>
+                    <label class="block text-xs font-medium uppercase tracking-wider text-slate-400 mb-2">Target Niche</label>
+                    <input type="text" id="niche" required placeholder="e.g. Hardware Stores, Dentists" 
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-400 mb-1">LOCATION / CITY</label>
-                    <input type="text" id="location" placeholder="e.g. Nairobi, Nakuru, Mombasa" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brand" required>
+                    <label class="block text-xs font-medium uppercase tracking-wider text-slate-400 mb-2">Location</label>
+                    <input type="text" id="location" required placeholder="e.g. Nakuru, Nairobi" 
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition">
                 </div>
-                <div class="flex items-end">
-                    <button type="submit" id="searchBtn" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-xl transition duration-200 shadow-lg shadow-emerald-500/20">
-                        Generate Live Batch
+                <div class="sm:col-span-2 mt-2">
+                    <button type="submit" id="searchBtn" 
+                        class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3.5 px-6 rounded-xl transition shadow-lg shadow-emerald-500/10 flex items-center justify-center space-x-2">
+                        <span>Initialize Extraction Matrix</span>
                     </button>
                 </div>
             </form>
         </div>
 
-        <div id="scarcityBanner" class="hidden bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-medium px-4 py-3 rounded-xl mb-6 flex justify-between items-center">
-            <span>Batch Scraped Successfully. Only <strong id="remainingCount">12</strong> verified leads remaining in this exclusive 24-hr extraction window.</span>
-            <span class="text-amber-400 font-bold">100% Active WhatsApp Verified</span>
-        </div>
-
-        <div id="resultsCard" class="hidden bg-cardbg rounded-2xl border border-slate-700/50 overflow-hidden shadow-2xl">
-            <div class="p-5 border-b border-slate-700/50 flex justify-between items-center">
-                <h3 class="font-bold text-sm text-slate-200">Extracted Preview (<span id="totalCount">0</span> Leads Found)</h3>
-                <span class="text-xs text-slate-400">Lock icon = Phone & Email Hidden</span>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs border-collapse">
-                    <thead class="bg-slate-900/50 text-slate-400 uppercase font-semibold">
-                        <tr>
-                            <th class="p-4">#</th>
-                            <th class="p-4">Business Name</th>
-                            <th class="p-4">Phone Number</th>
-                            <th class="p-4">Email</th>
-                            <th class="p-4">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="leadsTableBody" class="divide-y divide-slate-800"></tbody>
-                </table>
-            </div>
-
-            <div class="p-6 bg-slate-900/80 border-t border-slate-800 text-center">
-                <p class="text-sm font-semibold text-slate-300 mb-2">Unlock Full Unblurred CSV File + Direct Mobile Contacts</p>
-                <div class="flex justify-center items-center gap-3 mb-4">
-                    <input type="email" id="buyerEmail" placeholder="Enter your email to receive file" class="bg-cardbg border border-slate-700 px-4 py-2 rounded-xl text-xs w-64 focus:outline-none focus:border-brand">
-                    <button onclick="triggerPayment()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs px-6 py-2.5 rounded-xl transition">
-                        Unlock Full Batch for KES 1,500
-                    </button>
+        <!-- Results Matrix Container (Initially Hidden) -->
+        <div id="resultsContainer" class="hidden space-y-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-slate-900 border border-slate-800 p-6 rounded-2xl gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-white flex items-center space-x-2">
+                        <span>Extraction Results</span>
+                        <span id="totalBadge" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">0 Found</span>
+                    </h2>
+                    <p class="text-sm text-slate-400 mt-1">Showing preview batch. Unlock full list to download all verified records.</p>
                 </div>
-                <p class="text-[10px] text-slate-500">Automated M-Pesa STK Push / Card Checkout via Paystack. Direct CSV Download generated instantly upon payment.</p>
+                <button id="unlockBtn" 
+                    class="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-emerald-500/20 flex items-center space-x-2">
+                    <span>Unlock Full Database (KES 1,500)</span>
+                </button>
+            </div>
+
+            <!-- Leads Data Table -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-slate-800 text-xs uppercase tracking-wider text-slate-400 bg-slate-950/50">
+                                <th class="p-4 font-semibold">#</th>
+                                <th class="p-4 font-semibold">Business Name</th>
+                                <th class="p-4 font-semibold">Phone / WhatsApp</th>
+                                <th class="p-4 font-semibold">Email Address</th>
+                                <th class="p-4 font-semibold">Location</th>
+                                <th class="p-4 font-semibold">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody" class="divide-y divide-slate-800/60 text-sm">
+                            <!-- Dynamic rows injected here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500">
+        &copy; 2026 LeadVault Engine. All rights reserved. High-performance B2B Data Pipeline.
+    </footer>
+
+    <!-- Interactive Dashboard Script -->
     <script>
+        const searchForm = document.getElementById('searchForm');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const leadsTableBody = document.getElementById('leadsTableBody');
+        const totalBadge = document.getElementById('totalBadge');
+        const unlockBtn = document.getElementById('unlockBtn');
+
         let currentBatchId = "";
 
-        document.getElementById("searchForm").addEventListener("submit", async (e) => {
+        searchForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const niche = document.getElementById("niche").value;
-            const location = document.getElementById("location").value;
-            const searchBtn = document.getElementById("searchBtn");
+            const niche = document.getElementById('niche').value;
+            const location = document.getElementById('location').value;
 
-            searchBtn.innerText = "Extracting Live Data...";
             searchBtn.disabled = true;
+            searchBtn.innerHTML = '<span class="animate-pulse">Scraping Live Targets...</span>';
 
             try {
-                const response = await fetch("/api/v1/preview", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                const response = await fetch('/api/v1/preview', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ niche, location })
                 });
                 const data = await response.json();
-
-                currentBatchId = data.batch_id;
-                document.getElementById("totalCount").innerText = data.total_extracted;
                 
-                const tableBody = document.getElementById("leadsTableBody");
-                tableBody.innerHTML = "";
-
-                data.preview_leads.forEach(lead => {
-                    const row = `
-                        <tr class="hover:bg-slate-800/50 transition">
-                            <td class="p-4 text-slate-500">${lead.id}</td>
-                            <td class="p-4 font-semibold text-slate-200">${lead.business_name}</td>
-                            <td class="p-4 font-mono text-emerald-400">${lead.phone}</td>
-                            <td class="p-4 font-mono text-slate-400">${lead.email}</td>
-                            <td class="p-4"><span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-md text-[10px] font-bold">${lead.verification_status}</span></td>
-                        </tr>
+                currentBatchId = data.batch_id;
+                totalBadge.textContent = `${data.total_extracted} Leads Found`;
+                
+                leadsTableBody.innerHTML = '';
+                data.preview_leads.forEach((lead, index) => {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-slate-800/40 transition";
+                    row.innerHTML = `
+                        <td class="p-4 text-slate-500 font-mono">${index + 1}</td>
+                        <td class="p-4 font-medium text-white">${lead.business_name}</td>
+                        <td class="p-4 text-slate-300 font-mono">${lead.phone}</td>
+                        <td class="p-4 text-slate-300">${lead.email}</td>
+                        <td class="p-4 text-slate-400">${lead.location}</td>
+                        <td class="p-4">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                ${lead.verification_status}
+                            </span>
+                        </td>
                     `;
-                    tableBody.innerHTML += row;
+                    leadsTableBody.appendChild(row);
                 });
 
-                document.getElementById("scarcityBanner").classList.remove("hidden");
-                document.getElementById("resultsCard").classList.remove("hidden");
+                resultsContainer.classList.remove('hidden');
+                resultsContainer.scrollIntoView({ behavior: 'smooth' });
 
             } catch (err) {
-                alert("Extraction error. Please try again.");
+                alert('Extraction pipeline encountered an error. Please check inputs.');
             } finally {
-                searchBtn.innerText = "Generate Live Batch";
                 searchBtn.disabled = false;
+                searchBtn.innerHTML = '<span>Initialize Extraction Matrix</span>';
             }
         });
 
-        async function triggerPayment() {
-            const email = document.getElementById("buyerEmail").value;
-            if (!email) {
-                alert("Please enter a valid email address to proceed.");
-                return;
+        unlockBtn.addEventListener('click', async () => {
+            unlockBtn.disabled = true;
+            unlockBtn.textContent = 'Initializing Secure Paystack Checkout...';
+            
+            try {
+                const response = await fetch('/api/v1/initialize-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: "client@leadvault.co.ke",
+                        amount: 1500,
+                        batch_id: currentBatchId
+                    })
+                });
+                const data = await response.json();
+                if (data.status === 'success') {
+                    window.location.href = data.authorization_url;
+                } else {
+                    alert('Payment initialization failed.');
+                    unlockBtn.disabled = false;
+                    unlockBtn.textContent = 'Unlock Full Database (KES 1,500)';
+                }
+            } catch (err) {
+                alert('Network error connecting to payment gateway.');
+                unlockBtn.disabled = false;
+                unlockBtn.textContent = 'Unlock Full Database (KES 1,500)';
             }
-
-            const response = await fetch("/api/v1/initialize-payment", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: email, amount: 1500, batch_id: currentBatchId })
-            });
-
-            const data = await response.json();
-            if (data.authorization_url) {
-                window.location.href = data.authorization_url;
-            }
-        }
+        });
     </script>
 </body>
 </html>
