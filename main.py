@@ -2,11 +2,12 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
-from scraper import extract_leads
+from scraper import LeadScraper
 
 app = FastAPI(title="Lead Scraper SaaS")
 
 templates = Jinja2Templates(directory="templates")
+scraper = LeadScraper()
 
 class LeadRequest(BaseModel):
     niche: str
@@ -23,7 +24,7 @@ async def read_root(request: Request):
 
 @app.post("/api/v1/preview")
 async def get_preview(data: LeadRequest):
-    leads = extract_leads(data.niche, data.location)
+    leads = await scraper.extract_leads(data.niche, data.location)
     return {
         "batch_id": f"batch_{data.niche.lower()}_{data.location.lower()}",
         "total_extracted": len(leads),
@@ -32,7 +33,6 @@ async def get_preview(data: LeadRequest):
 
 @app.post("/api/v1/initialize-payment")
 async def initialize_payment(data: PaymentRequest):
-    # Simulated Paystack checkout initialization URL
     return {
         "status": "success",
         "authorization_url": f"https://checkout.paystack.com/mock-{data.batch_id}"
