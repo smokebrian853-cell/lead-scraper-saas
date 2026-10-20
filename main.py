@@ -6,7 +6,6 @@ from scraper import LeadScraper
 
 app = FastAPI(title="Lead Scraper SaaS")
 
-# Look in the current folder for index.html
 templates = Jinja2Templates(directory=".")
 scraper = LeadScraper()
 
@@ -21,7 +20,7 @@ class PaymentRequest(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+    return templates.TemplateResponse(request, "index.html", {"request": request})
 
 @app.post("/api/v1/preview")
 async def get_preview(data: LeadRequest):
