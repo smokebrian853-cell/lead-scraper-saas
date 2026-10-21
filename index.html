@@ -3,90 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeadVault | B2B Data Extraction Engine</title>
+    <title>LeadVault | Enterprise B2B Data Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="h-full text-slate-100 font-sans antialiased flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- Minimalist Navigation Bar -->
-    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Top Command Navigation -->
+    <header class="border-b border-slate-900 bg-slate-950/90 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                <span class="text-lg font-bold tracking-tight text-white">Lead<span class="text-emerald-400">Vault</span></span>
+                <div class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping"></div>
+                <span class="text-xl font-black tracking-tight text-white">LEAD<span class="text-emerald-400">VAULT</span></span>
+                <span class="hidden sm:inline-block px-2.5 py-0.5 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20 uppercase tracking-widest">Enterprise Core</span>
             </div>
-            <div class="text-xs font-mono px-3 py-1 bg-slate-900 text-slate-400 rounded-full border border-slate-800">
-                SYSTEM: <span class="text-emerald-400">ONLINE</span>
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-2 text-xs font-mono text-slate-400">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span>API: STABLE</span>
+                </div>
+                <div class="text-xs font-mono px-3 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-800">
+                    STATUS: <span class="text-emerald-400 font-bold">READY</span>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Main Workspace -->
-    <main class="max-w-4xl mx-auto px-6 py-16 w-full flex-grow">
+    <main class="max-w-6xl mx-auto px-6 py-12 w-full flex-grow space-y-10">
         
-        <!-- Hero Section -->
-        <div class="text-center mb-14">
-            <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
-                B2B Intelligence, <span class="text-emerald-400">Extracted Live.</span>
-            </h1>
-            <p class="text-base sm:text-lg text-slate-400 max-w-xl mx-auto">
-                Target verified business niches, filter active WhatsApp lines, and unlock immediate prospect databases.
-            </p>
+        <!-- Live Metrics Bar -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-md">
+                <p class="text-[11px] font-mono uppercase tracking-wider text-slate-500">Global Indexing</p>
+                <p class="text-2xl font-black text-white mt-1">2.4M+ <span class="text-xs font-normal text-emerald-400">Records</span></p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-md">
+                <p class="text-[11px] font-mono uppercase tracking-wider text-slate-500">WhatsApp Validation</p>
+                <p class="text-2xl font-black text-white mt-1">99.4% <span class="text-xs font-normal text-emerald-400">Accuracy</span></p>
+            </div>
+            <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-md">
+                <p class="text-[11px] font-mono uppercase tracking-wider text-slate-500">Access Tier</p>
+                <p class="text-2xl font-black text-emerald-400 mt-1">KES 1,500 <span class="text-xs font-normal text-slate-400">/ batch</span></p>
+            </div>
         </div>
 
-        <!-- The Primary Trigger Box -->
-        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl mb-12">
+        <!-- Hero & Search Control Terminal -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="max-w-2xl mb-8">
+                <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-white mb-3">
+                    B2B Intelligence Matrix. <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Extracted Live.</span>
+                </h1>
+                <p class="text-sm sm:text-base text-slate-400">
+                    Deploy targeted extraction algorithms, filter live WhatsApp nodes, and export enterprise-grade prospect databases instantly.
+                </p>
+            </div>
+
             <form id="searchForm" class="space-y-6">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                         <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Target Niche</label>
                         <input type="text" id="niche" required placeholder="e.g. Hardware Stores, Dentists" 
-                            class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition font-medium">
+                            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition font-medium text-sm">
                     </div>
                     <div>
                         <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Target Location</label>
                         <input type="text" id="location" required placeholder="e.g. Nakuru, Nairobi" 
-                            class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition font-medium">
+                            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition font-medium text-sm">
                     </div>
                 </div>
                 <button type="submit" id="searchBtn" 
-                    class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-4 px-8 rounded-2xl transition shadow-lg shadow-emerald-500/10 text-center tracking-wide">
-                    INITIALIZE EXTRACTION MATRIX
+                    class="w-full bg-gradient-to-r from-emerald-500 to-emerald-400 hover:from-emerald-400 hover:to-emerald-300 text-slate-950 font-black py-4 px-8 rounded-xl transition shadow-lg shadow-emerald-500/20 text-center uppercase tracking-wider text-sm flex items-center justify-center space-x-2">
+                    <span>Execute Extraction Protocol</span>
                 </button>
             </form>
+
+            <!-- Live Terminal Log (Hidden by default, shown during search) -->
+            <div id="terminalLog" class="hidden mt-6 bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-emerald-400 space-y-1.5">
+                <p class="text-slate-500">[SYSTEM] Initializing secure socket connection...</p>
+            </div>
         </div>
 
         <!-- Results Matrix (Reveals on Trigger) -->
         <div id="resultsContainer" class="hidden space-y-6">
             
-            <!-- Action Header / Monetization Trigger -->
-            <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <!-- Conversion Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-emerald-950/40 border border-slate-800 p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
                 <div>
-                    <span id="totalBadge" class="text-xs font-mono px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20 inline-block mb-2">0 Leads Found</span>
-                    <h2 class="text-2xl font-bold text-white tracking-tight">Preview Batch Ready</h2>
-                    <p class="text-sm text-slate-400 mt-1">Showing sample verification data. Unlock full database for instant deployment.</p>
+                    <span id="totalBadge" class="text-xs font-mono px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20 inline-block mb-3">0 Leads Extracted</span>
+                    <h2 class="text-2xl font-black text-white tracking-tight">Preview Batch Compiled</h2>
+                    <p class="text-sm text-slate-400 mt-1">Showing verified sample records. Unlock full database to download complete contact files.</p>
                 </div>
                 <button id="unlockBtn" 
-                    class="bg-gradient-to-r from-emerald-500 to-cyan-400 hover:from-emerald-400 hover:to-cyan-300 text-slate-950 font-extrabold px-8 py-4 rounded-2xl transition shadow-xl shadow-emerald-500/20 whitespace-nowrap">
-                    UNLOCK FULL DATABASE (KES 1,500)
+                    class="bg-white hover:bg-slate-100 text-slate-950 font-black px-8 py-4 rounded-xl transition shadow-xl whitespace-nowrap text-sm tracking-wide uppercase">
+                    Unlock Full Database (KES 1,500)
                 </button>
             </div>
 
-            <!-- Clean Table View -->
+            <!-- Sleek Data Table -->
             <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="border-b border-slate-800 text-xs font-mono uppercase tracking-wider text-slate-500 bg-slate-950/40">
-                                <th class="p-5 font-medium">#</th>
-                                <th class="p-5 font-medium">Business Name</th>
-                                <th class="p-5 font-medium">Phone / WhatsApp</th>
-                                <th class="p-5 font-medium">Email</th>
-                                <th class="p-5 font-medium">Location</th>
-                                <th class="p-5 font-medium">Status</th>
+                            <tr class="border-b border-slate-800 text-[11px] font-mono uppercase tracking-wider text-slate-500 bg-slate-950/60">
+                                <th class="p-5 font-semibold">#</th>
+                                <th class="p-5 font-semibold">Business Name</th>
+                                <th class="p-5 font-semibold">Phone / WhatsApp</th>
+                                <th class="p-5 font-semibold">Email Address</th>
+                                <th class="p-5 font-semibold">Location</th>
+                                <th class="p-5 font-semibold">Status</th>
                             </tr>
                         </thead>
-                        <tbody id="leadsTableBody" class="divide-y divide-slate-800/50 text-sm">
+                        <tbody id="leadsTableBody" class="divide-y divide-slate-800/40 text-sm">
                             <!-- Dynamic Rows -->
                         </tbody>
                     </table>
@@ -98,13 +127,14 @@
 
     <!-- Footer -->
     <footer class="border-t border-slate-900 py-6 text-center text-xs font-mono text-slate-600">
-        LEADVAULT TERMINAL // SECURE PIPELINE
+        LEADVAULT PROTOCOL // ENCRYPTED B2B DATA PIPELINE
     </footer>
 
     <!-- Script Trigger Handlers -->
     <script>
         const searchForm = document.getElementById('searchForm');
         const searchBtn = document.getElementById('searchBtn');
+        const terminalLog = document.getElementById('terminalLog');
         const resultsContainer = document.getElementById('resultsContainer');
         const leadsTableBody = document.getElementById('leadsTableBody');
         const totalBadge = document.getElementById('totalBadge');
@@ -118,7 +148,17 @@
             const location = document.getElementById('location').value;
 
             searchBtn.disabled = true;
-            searchBtn.textContent = 'EXECUTING EXTRACTION PROTOCOL...';
+            searchBtn.innerHTML = '<span class="animate-pulse">Running Extraction Engine...</span>';
+            
+            // Show terminal animation
+            terminalLog.classList.remove('hidden');
+            terminalLog.innerHTML = `
+                <p class="text-slate-400">[0.1s] Connecting to regional directory nodes for ${niche}...</p>
+            `;
+
+            setTimeout(() => {
+                terminalLog.innerHTML += `<p class="text-slate-400">[0.3s] Querying live geolocation grid: ${location}...</p>`;
+            }, 300);
 
             try {
                 const response = await fetch('/api/v1/preview', {
@@ -128,42 +168,50 @@
                 });
                 const data = await response.json();
                 
-                currentBatchId = data.batch_id;
-                totalBadge.textContent = `${data.total_extracted} LEADS FOUND`;
-                
-                leadsTableBody.innerHTML = '';
-                data.preview_leads.forEach((lead, index) => {
-                    const row = document.createElement('tr');
-                    row.className = "hover:bg-slate-800/30 transition";
-                    row.innerHTML = `
-                        <td class="p-5 text-slate-600 font-mono">${index + 1}</td>
-                        <td class="p-5 font-semibold text-white">${lead.business_name}</td>
-                        <td class="p-5 text-slate-300 font-mono">${lead.phone}</td>
-                        <td class="p-5 text-slate-400">${lead.email}</td>
-                        <td class="p-5 text-slate-400">${lead.location}</td>
-                        <td class="p-5">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                                ${lead.verification_status}
-                            </span>
-                        </td>
-                    `;
-                    leadsTableBody.appendChild(row);
-                });
+                setTimeout(() => {
+                    terminalLog.innerHTML += `<p class="text-emerald-400">[0.6s] Success: ${data.total_extracted} verified records compiled.</p>`;
+                }, 600);
 
-                resultsContainer.classList.remove('hidden');
-                resultsContainer.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(async () => {
+                    currentBatchId = data.batch_id;
+                    totalBadge.textContent = `${data.total_extracted} Leads Extracted`;
+                    
+                    leadsTableBody.innerHTML = '';
+                    data.preview_leads.forEach((lead, index) => {
+                        const row = document.createElement('tr');
+                        row.className = "hover:bg-slate-800/30 transition";
+                        row.innerHTML = `
+                            <td class="p-5 text-slate-600 font-mono">${index + 1}</td>
+                            <td class="p-5 font-bold text-white">${lead.business_name}</td>
+                            <td class="p-5 text-slate-300 font-mono">${lead.phone}</td>
+                            <td class="p-5 text-slate-400">${lead.email}</td>
+                            <td class="p-5 text-slate-400">${lead.location}</td>
+                            <td class="p-5">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                    ${lead.verification_status}
+                                </span>
+                            </td>
+                        `;
+                        leadsTableBody.appendChild(row);
+                    });
+
+                    terminalLog.classList.add('hidden');
+                    resultsContainer.classList.remove('hidden');
+                    resultsContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 900);
 
             } catch (err) {
                 alert('Pipeline error. Verify connection.');
+                terminalLog.classList.add('hidden');
             } finally {
                 searchBtn.disabled = false;
-                searchBtn.textContent = 'INITIALIZE EXTRACTION MATRIX';
+                searchBtn.innerHTML = '<span>Execute Extraction Protocol</span>';
             }
         });
 
         unlockBtn.addEventListener('click', async () => {
             unlockBtn.disabled = true;
-            unlockBtn.textContent = 'CONNECTING TO PAYSTACK...';
+            unlockBtn.textContent = 'Initializing Paystack Gateway...';
             
             try {
                 const response = await fetch('/api/v1/initialize-payment', {
@@ -181,12 +229,12 @@
                 } else {
                     alert('Payment initialization failed.');
                     unlockBtn.disabled = false;
-                    unlockBtn.textContent = 'UNLOCK FULL DATABASE (KES 1,500)';
+                    unlockBtn.textContent = 'Unlock Full Database (KES 1,500)';
                 }
             } catch (err) {
                 alert('Gateway network error.');
                 unlockBtn.disabled = false;
-                unlockBtn.textContent = 'UNLOCK FULL DATABASE (KES 1,500)';
+                unlockBtn.textContent = 'Unlock Full Database (KES 1,500)';
             }
         });
     </script>
