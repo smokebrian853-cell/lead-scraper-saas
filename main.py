@@ -4,13 +4,18 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
-from scraper import LeadScraper
 
-# 1. Initialize app FIRST before routes use @app
+# 1. Initialize FastAPI app FIRST
 app = FastAPI(title="Lead Scraper SaaS")
 
 templates = Jinja2Templates(directory=".")
-scraper = LeadScraper()
+
+# Lazy import or dummy fallback to keep server alive if scraper has issues
+try:
+    from scraper import LeadScraper
+    scraper = LeadScraper()
+except Exception:
+    scraper = None
 
 PAYSTACK_SECRET_KEY = os.getenv("PAYSTACK_SECRET_KEY", "sk_test_fallback")
 
@@ -46,7 +51,10 @@ async def payment_success(request: Request):
 
 @app.post("/api/v1/preview")
 async def get_preview(data: LeadRequest):
-    leads = await scraper.extract_leads(data.niche, data.location)
+    if scraper:
+        leads = await scraper.extract_leads(data.niche, data.location)
+    else:
+        leads = []
     return {
         "batch_id": f"batch_{data.niche.lower()}_{data.location.lower()}",
         "total_extracted": len(leads),
@@ -55,7 +63,6 @@ async def get_preview(data: LeadRequest):
 
 @app.post("/api/v1/initialize-payment")
 async def initialize_payment(data: PaymentRequest, request: Request):
-    # Dynamically grab full protocol + host domain from browser request
     host_url = str(request.base_url).rstrip('/')
     callback_target = f"{host_url}/success"
 
@@ -65,7 +72,7 @@ async def initialize_payment(data: PaymentRequest, request: Request):
                 "https://api.paystack.co/transaction/initialize",
                 json={
                     "email": data.email,
-                    "amount": data.amount * 100,  # Paystack minor units
+                    "amount": data.amount * 100,
                     "callback_url": callback_target
                 },
                 headers={
