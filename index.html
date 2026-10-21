@@ -6,89 +6,88 @@
     <title>LeadVault | B2B Data Extraction Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="h-full text-slate-100 font-sans antialiased flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
+<body class="h-full text-slate-100 font-sans antialiased flex flex-col justify-between selection:bg-emerald-500 selection:text-slate-950">
 
-    <!-- Top Navigation Bar -->
-    <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Minimalist Navigation Bar -->
+    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="h-3 w-3 rounded-full bg-emerald-500 animate-pulse"></div>
-                <span class="text-xl font-bold tracking-tight text-white">Lead<span class="text-emerald-400">Vault</span></span>
-                <span class="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Live Engine v1.0</span>
+                <div class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="text-lg font-bold tracking-tight text-white">Lead<span class="text-emerald-400">Vault</span></span>
             </div>
-            <div class="flex items-center space-x-4 text-sm text-slate-400">
-                <span>Status: <strong class="text-emerald-400">Operational</strong></span>
+            <div class="text-xs font-mono px-3 py-1 bg-slate-900 text-slate-400 rounded-full border border-slate-800">
+                SYSTEM: <span class="text-emerald-400">ONLINE</span>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Hub -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+    <!-- Main Workspace -->
+    <main class="max-w-4xl mx-auto px-6 py-16 w-full flex-grow">
         
-        <!-- Hero Search Section -->
-        <div class="text-center max-w-3xl mx-auto mb-12">
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-                Extract Verified B2B Leads <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">in Real-Time</span>
+        <!-- Hero Section -->
+        <div class="text-center mb-14">
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-white mb-4">
+                B2B Intelligence, <span class="text-emerald-400">Extracted Live.</span>
             </h1>
-            <p class="text-lg text-slate-400">
-                Target high-value businesses, filter active WhatsApp numbers, and export ready-to-close prospect lists instantly.
+            <p class="text-base sm:text-lg text-slate-400 max-w-xl mx-auto">
+                Target verified business niches, filter active WhatsApp lines, and unlock immediate prospect databases.
             </p>
         </div>
 
-        <!-- Search Control Panel -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl max-w-3xl mx-auto mb-12">
-            <form id="searchForm" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-xs font-medium uppercase tracking-wider text-slate-400 mb-2">Target Niche</label>
-                    <input type="text" id="niche" required placeholder="e.g. Hardware Stores, Dentists" 
-                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition">
+        <!-- The Primary Trigger Box -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl mb-12">
+            <form id="searchForm" class="space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Target Niche</label>
+                        <input type="text" id="niche" required placeholder="e.g. Hardware Stores, Dentists" 
+                            class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition font-medium">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">Target Location</label>
+                        <input type="text" id="location" required placeholder="e.g. Nakuru, Nairobi" 
+                            class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-5 py-4 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition font-medium">
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-xs font-medium uppercase tracking-wider text-slate-400 mb-2">Location</label>
-                    <input type="text" id="location" required placeholder="e.g. Nakuru, Nairobi" 
-                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition">
-                </div>
-                <div class="sm:col-span-2 mt-2">
-                    <button type="submit" id="searchBtn" 
-                        class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3.5 px-6 rounded-xl transition shadow-lg shadow-emerald-500/10 flex items-center justify-center space-x-2">
-                        <span>Initialize Extraction Matrix</span>
-                    </button>
-                </div>
+                <button type="submit" id="searchBtn" 
+                    class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-4 px-8 rounded-2xl transition shadow-lg shadow-emerald-500/10 text-center tracking-wide">
+                    INITIALIZE EXTRACTION MATRIX
+                </button>
             </form>
         </div>
 
-        <!-- Results Matrix Container (Initially Hidden) -->
+        <!-- Results Matrix (Reveals on Trigger) -->
         <div id="resultsContainer" class="hidden space-y-6">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-slate-900 border border-slate-800 p-6 rounded-2xl gap-4">
+            
+            <!-- Action Header / Monetization Trigger -->
+            <div class="bg-slate-900 border border-slate-800 p-8 rounded-3xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                 <div>
-                    <h2 class="text-xl font-bold text-white flex items-center space-x-2">
-                        <span>Extraction Results</span>
-                        <span id="totalBadge" class="text-xs px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">0 Found</span>
-                    </h2>
-                    <p class="text-sm text-slate-400 mt-1">Showing preview batch. Unlock full list to download all verified records.</p>
+                    <span id="totalBadge" class="text-xs font-mono px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20 inline-block mb-2">0 Leads Found</span>
+                    <h2 class="text-2xl font-bold text-white tracking-tight">Preview Batch Ready</h2>
+                    <p class="text-sm text-slate-400 mt-1">Showing sample verification data. Unlock full database for instant deployment.</p>
                 </div>
                 <button id="unlockBtn" 
-                    class="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-emerald-500/20 flex items-center space-x-2">
-                    <span>Unlock Full Database (KES 1,500)</span>
+                    class="bg-gradient-to-r from-emerald-500 to-cyan-400 hover:from-emerald-400 hover:to-cyan-300 text-slate-950 font-extrabold px-8 py-4 rounded-2xl transition shadow-xl shadow-emerald-500/20 whitespace-nowrap">
+                    UNLOCK FULL DATABASE (KES 1,500)
                 </button>
             </div>
 
-            <!-- Leads Data Table -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+            <!-- Clean Table View -->
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="border-b border-slate-800 text-xs uppercase tracking-wider text-slate-400 bg-slate-950/50">
-                                <th class="p-4 font-semibold">#</th>
-                                <th class="p-4 font-semibold">Business Name</th>
-                                <th class="p-4 font-semibold">Phone / WhatsApp</th>
-                                <th class="p-4 font-semibold">Email Address</th>
-                                <th class="p-4 font-semibold">Location</th>
-                                <th class="p-4 font-semibold">Status</th>
+                            <tr class="border-b border-slate-800 text-xs font-mono uppercase tracking-wider text-slate-500 bg-slate-950/40">
+                                <th class="p-5 font-medium">#</th>
+                                <th class="p-5 font-medium">Business Name</th>
+                                <th class="p-5 font-medium">Phone / WhatsApp</th>
+                                <th class="p-5 font-medium">Email</th>
+                                <th class="p-5 font-medium">Location</th>
+                                <th class="p-5 font-medium">Status</th>
                             </tr>
                         </thead>
-                        <tbody id="leadsTableBody" class="divide-y divide-slate-800/60 text-sm">
-                            <!-- Dynamic rows injected here -->
+                        <tbody id="leadsTableBody" class="divide-y divide-slate-800/50 text-sm">
+                            <!-- Dynamic Rows -->
                         </tbody>
                     </table>
                 </div>
@@ -98,11 +97,11 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-900/40 py-6 text-center text-xs text-slate-500">
-        &copy; 2026 LeadVault Engine. All rights reserved. High-performance B2B Data Pipeline.
+    <footer class="border-t border-slate-900 py-6 text-center text-xs font-mono text-slate-600">
+        LEADVAULT TERMINAL // SECURE PIPELINE
     </footer>
 
-    <!-- Interactive Dashboard Script -->
+    <!-- Script Trigger Handlers -->
     <script>
         const searchForm = document.getElementById('searchForm');
         const searchBtn = document.getElementById('searchBtn');
@@ -119,7 +118,7 @@
             const location = document.getElementById('location').value;
 
             searchBtn.disabled = true;
-            searchBtn.innerHTML = '<span class="animate-pulse">Scraping Live Targets...</span>';
+            searchBtn.textContent = 'EXECUTING EXTRACTION PROTOCOL...';
 
             try {
                 const response = await fetch('/api/v1/preview', {
@@ -130,20 +129,20 @@
                 const data = await response.json();
                 
                 currentBatchId = data.batch_id;
-                totalBadge.textContent = `${data.total_extracted} Leads Found`;
+                totalBadge.textContent = `${data.total_extracted} LEADS FOUND`;
                 
                 leadsTableBody.innerHTML = '';
                 data.preview_leads.forEach((lead, index) => {
                     const row = document.createElement('tr');
-                    row.className = "hover:bg-slate-800/40 transition";
+                    row.className = "hover:bg-slate-800/30 transition";
                     row.innerHTML = `
-                        <td class="p-4 text-slate-500 font-mono">${index + 1}</td>
-                        <td class="p-4 font-medium text-white">${lead.business_name}</td>
-                        <td class="p-4 text-slate-300 font-mono">${lead.phone}</td>
-                        <td class="p-4 text-slate-300">${lead.email}</td>
-                        <td class="p-4 text-slate-400">${lead.location}</td>
-                        <td class="p-4">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                        <td class="p-5 text-slate-600 font-mono">${index + 1}</td>
+                        <td class="p-5 font-semibold text-white">${lead.business_name}</td>
+                        <td class="p-5 text-slate-300 font-mono">${lead.phone}</td>
+                        <td class="p-5 text-slate-400">${lead.email}</td>
+                        <td class="p-5 text-slate-400">${lead.location}</td>
+                        <td class="p-5">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                                 ${lead.verification_status}
                             </span>
                         </td>
@@ -155,16 +154,16 @@
                 resultsContainer.scrollIntoView({ behavior: 'smooth' });
 
             } catch (err) {
-                alert('Extraction pipeline encountered an error. Please check inputs.');
+                alert('Pipeline error. Verify connection.');
             } finally {
                 searchBtn.disabled = false;
-                searchBtn.innerHTML = '<span>Initialize Extraction Matrix</span>';
+                searchBtn.textContent = 'INITIALIZE EXTRACTION MATRIX';
             }
         });
 
         unlockBtn.addEventListener('click', async () => {
             unlockBtn.disabled = true;
-            unlockBtn.textContent = 'Initializing Secure Paystack Checkout...';
+            unlockBtn.textContent = 'CONNECTING TO PAYSTACK...';
             
             try {
                 const response = await fetch('/api/v1/initialize-payment', {
@@ -182,12 +181,12 @@
                 } else {
                     alert('Payment initialization failed.');
                     unlockBtn.disabled = false;
-                    unlockBtn.textContent = 'Unlock Full Database (KES 1,500)';
+                    unlockBtn.textContent = 'UNLOCK FULL DATABASE (KES 1,500)';
                 }
             } catch (err) {
-                alert('Network error connecting to payment gateway.');
+                alert('Gateway network error.');
                 unlockBtn.disabled = false;
-                unlockBtn.textContent = 'Unlock Full Database (KES 1,500)';
+                unlockBtn.textContent = 'UNLOCK FULL DATABASE (KES 1,500)';
             }
         });
     </script>
